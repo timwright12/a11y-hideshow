@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+      .is-hidden {
+        position: absolute;
+        top: -999em;
+        left: -999em;
+      }
+      
+      .is-removed {
+        display: none;
+      }
+      
+      .content {
+        padding: 10px;
+        max-width: 40em;
+        line-height: 1.6;
+      }
+      
+      button {
+        border: 2px solid #000;
+        padding: 10px;
+        min-width: 100px;
+      }
+      
+      button:focus {
+        border: 2px solid red;
+      }
+    </style>
+  </head>
+  <body>
+
+    <button
+       type="button"
+       data-action="hide-show"
+       data-text="Hide"
+       data-class="is-hidden"
+       aria-controls="worms"
+       aria-live="polite"
+       aria-expanded="false">
+       Show
+    </button>
+    
+    <div id="worms" class="content is-hidden">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet consequat dui in porttitor. Nunc ullamcorper rutrum erat, eget semper risus pellentesque eu. Nunc tempus ipsum ac tortor feugiat, eu volutpat ligula pretium. Nulla facilisi. Ut convallis ac massa quis tristique. Phasellus laoreet metus ac turpis luctus consectetur. Sed accumsan nisl nunc, sed tempor elit scelerisque in. Phasellus quis odio scelerisque, tempor odio quis, elementum libero. Nulla convallis risus sed commodo pharetra. Vestibulum augue nunc, faucibus vitae risus et, rhoncus aliquet ex. Nullam tincidunt diam ac consequat egestas.
+      </p>
+    </div>
+    
+    <hr>
+    
+    <button
+       type="button"
+       data-action="hide-show"
+       data-text="Show"
+       data-class="is-hidden"
+       aria-controls="worms1"
+       aria-live="polite"
+       aria-expanded="true">
+       Hide
+    </button>
+    
+    <div id="worms1" class="content">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet consequat dui in porttitor. Nunc ullamcorper rutrum erat, eget semper risus pellentesque eu. Nunc tempus ipsum ac tortor feugiat, eu volutpat ligula pretium. Nulla facilisi. Ut convallis ac massa quis tristique. Phasellus laoreet metus ac turpis luctus consectetur. Sed accumsan nisl nunc, sed tempor elit scelerisque in. Phasellus quis odio scelerisque, tempor odio quis, elementum libero. Nulla convallis risus sed commodo pharetra. Vestibulum augue nunc, faucibus vitae risus et, rhoncus aliquet ex. Nullam tincidunt diam ac consequat egestas.
+      </p>
+    </div>
+
+    <!-- just include the script and use the button HTML above -->
+    <script src="hide-show.js"></script>
+    
+  </body>
+</html>
