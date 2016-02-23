@@ -1,7 +1,8 @@
 /*! Simple and Accessible Hide/Show toggle behavior
  * Copyright Whatever Year It is Tim Wright
  * Licensed under MIT
- * https://github.com/timwright12/SVG-Icon-Sprite-Polyfill/
+ * Repo: https://github.com/timwright12/hideshow/
+ * Pen: http://codepen.io/timwright12/pen/yerzqG
  *
  * HTML example usage:
   
