@@ -58,7 +58,7 @@
   HideShow.removeClass = function(el, cls) {
     if (el.classList) {
       el.classList.remove(cls);
-    } else if (hasClass(el, cls)) {
+    } else if (HideShow.hasClass(el, cls)) {
       var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
       el.cls=el.cls.replace(reg, ' ');
     }
@@ -71,7 +71,7 @@
   HideShow.addClass = function(el, cls) {
     if (el.classList) {
       el.classList.add(cls);
-    } else if (!hasClass(el, cls)) {
+    } else if (!HideShow.hasClass(el, cls)) {
       el.cls += " " + cls;
     }
   };
