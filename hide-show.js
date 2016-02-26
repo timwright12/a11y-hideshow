@@ -103,8 +103,10 @@
     
     var tgtEl = doc.getElementById(target);
     
-    self.innerHTML = replaceText;
-    self.setAttribute('data-text', text);
+    if( replaceText ) {
+      self.innerHTML = replaceText;
+      self.setAttribute('data-text', text);
+    }
     
     // If a class will be used to hide the element
     if( className ) {
