@@ -102,14 +102,16 @@
   HideShow.toggle = function(self, target, text, replaceText, expanded, className ) {
     
     var tgtEl = doc.getElementById(target);
+    var elem = doc.getElementById(tgtEl);
+    var CSSdisplay = w.getComputedStyle(tgtEl, null).getPropertyValue("display");
     
     if( replaceText ) {
       self.innerHTML = replaceText;
       self.setAttribute('data-text', text);
     }
     
-    // If a class will be used to hide the element
-    if( className ) {
+    // If a class will be used to hide the element and it's not setting display: none
+    if( className && CSSdisplay !== 'none' ) {
       
       // if the target element already contains the chosen class
       if( this.hasClass( tgtEl, className )) {
@@ -124,9 +126,26 @@
         this.addClass( tgtEl, className);
         this.removeEl( self, tgtEl );
         
-      }
+      } // if hasClass
     
-    // classes are not being used to hide/show
+    // classes are being used to hide/show, but it's setting display: none
+    } else if( className && CSSdisplay === 'none' ) {
+      
+      if( this.hasClass( tgtEl, className )) {
+        
+        this.removeClass( tgtEl, className );
+        this.displayEl( self, tgtEl );
+        tgtEl.setAttribute('aria-hidden', true);
+      
+      // no classes being used
+      } else {
+        
+        this.addClass( tgtEl, className);
+        this.removeEl( self, tgtEl );
+        tgtEl.removeAttribute('aria-hidden');
+        
+      }
+      
     } else {
       
       // If the target element is being displayed
