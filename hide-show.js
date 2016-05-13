@@ -82,7 +82,7 @@
   
   HideShow.displayEl = function( self, el ) {
     self.setAttribute('aria-expanded', true);
-    el.setAttribute('tabindex', 0);
+    el.setAttribute('tabindex', '-1');
     el.focus();
   };
   
