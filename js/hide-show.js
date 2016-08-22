@@ -84,20 +84,6 @@
     self.setAttribute('aria-expanded', true);
     el.setAttribute('tabindex', '-1');
     el.focus();
-
-    /*
-    TO DO: Make an option to close the target DIV on keyup (defined in data-close)
-
-    // if closeKey exists and it's a number
-    if( closeKey && !isNaN(closeKey) ) {
-      self.addEventListener('keyup', function(e) {
-        if ( closeKey == e.keyCode ) {
-          console.log('got one');
-        }
-      }, false);
-    }
-    */
-
   };
 
   /*
@@ -113,49 +99,49 @@
     Master toggle method for hiding and showing content
   */
 
-  HideShow.toggle = function(self, target, text, replaceText, expanded, className, closeKey ) {
+  HideShow.toggle = function( options ) {
 
-    var tgtEl = doc.getElementById(target);
+    var tgtEl = doc.getElementById(options.target);
     var elem = doc.getElementById(tgtEl);
     var CSSdisplay = w.getComputedStyle(tgtEl, null).getPropertyValue("display");
 
-    if( replaceText ) {
-      self.innerHTML = replaceText;
-      self.setAttribute('data-text', text);
+    if( options.replaceText ) {
+      options.self.innerHTML = options.replaceText;
+      options.self.setAttribute('data-text', options.text);
     }
 
     // If a class will be used to hide the element and it's not setting display: none
-    if( className && CSSdisplay !== 'none' ) {
+    if( options.className && CSSdisplay !== 'none' ) {
 
       // if the target element already contains the chosen class
-      if( this.hasClass( tgtEl, className )) {
+      if( this.hasClass( tgtEl, options.className )) {
 
         // YES: remove it, and display the elememt
-        this.removeClass( tgtEl, className );
-        this.displayEl( self, tgtEl );
+        this.removeClass( tgtEl, options.className );
+        this.displayEl( options.self, tgtEl );
 
       } else {
 
         // NO: Add it, and hide the element
-        this.addClass( tgtEl, className);
-        this.removeEl( self, tgtEl );
+        this.addClass( tgtEl, options.className);
+        this.removeEl( options.self, tgtEl );
 
       } // if hasClass
 
     // classes are being used to hide/show, but it's setting display: none
-    } else if( className && CSSdisplay === 'none' ) {
+    } else if( options.className && CSSdisplay === 'none' ) {
 
-      if( this.hasClass( tgtEl, className )) {
+      if( this.hasClass( tgtEl, options.className )) {
 
-        this.removeClass( tgtEl, className );
-        this.displayEl( self, tgtEl );
+        this.removeClass( tgtEl, options.className );
+        this.displayEl( options.self, tgtEl );
         tgtEl.setAttribute('aria-hidden', true);
 
       // no classes being used
       } else {
 
-        this.addClass( tgtEl, className);
-        this.removeEl( self, tgtEl );
+        this.addClass( tgtEl, options.className);
+        this.removeEl( options.self, tgtEl );
         tgtEl.removeAttribute('aria-hidden');
 
       }
@@ -170,7 +156,7 @@
         tgtEl.setAttribute('aria-hidden', true);
 
         // YES: hide it
-        this.removeEl( self, tgtEl );
+        this.removeEl( options.self, tgtEl );
 
       } else {
 
@@ -179,7 +165,7 @@
         tgtEl.removeAttribute('aria-hidden');
 
         // NO: show it
-        this.displayEl( self, tgtEl );
+        this.displayEl( options.self, tgtEl );
 
       } // if el is hidden
 
@@ -192,7 +178,7 @@
 
     var btns = doc.querySelectorAll('[data-action="hide-show"]');
     var btnsCount = btns.length;
-    var i, text, replaceText, target, className, expanded, closeKey;
+    var i, text, replaceText, target, className, expanded;
 
     if( btnsCount > 0 ) {
       for (i = 0; i < btnsCount; i = i + 1) {
@@ -207,7 +193,6 @@
           target = this.getAttribute('aria-controls');
           className = this.getAttribute('data-class');
           expanded = this.getAttribute('aria-expanded');
-          closeKey = this.getAttribute('data-close');
 
           // if there's no aria-controls attribute, look for an href, this could be a link!
           if( !target ) {
@@ -221,7 +206,14 @@
           e.preventDefault();
 
           // calling the toggle
-          HideShow.toggle(this, target, text, replaceText, expanded, className, closeKey);
+          HideShow.toggle({
+            'self' : this,
+            'target' : target,
+            'text' : text,
+            'replaceText' : replaceText,
+            'expanded' : expanded,
+            'className' : className,
+          });
 
         }); // click
 
