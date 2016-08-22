@@ -194,7 +194,15 @@
           className = this.getAttribute('data-class');
           expanded = this.getAttribute('aria-expanded');
           
-          // just in case it's a link, but it should be a button
+          // if there's no aria-controls attribute, look for an href, this could be a link!
+          if( !target ) {
+	          
+	          // using split() instead of just grabbing the hash because some older browsers will return the absolute URL, so this is safer
+	          target = this.getAttribute('href').split('#')[1];
+          
+          }
+          
+          // again, just in case it's a link, but it should be a button
           e.preventDefault();
           
           // calling the toggle
