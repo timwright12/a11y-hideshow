@@ -5,18 +5,18 @@ View the Pen: http://codepen.io/timwright12/pen/yerzqG
 
 ## Syntax for using a button as the toggle
 
-```<button
-	type="button"
-	data-action="hide-show"
-	data-text="Hide"
-	data-class="is-hidden"
-	aria-controls="your-target-id"
-	aria-live="polite"
-	aria-expanded="false">
-	Show
-</button>
-
-<div id="your-target-id" class="is-hidden"></div>```
+	<button
+		type="button"
+		data-action="hide-show"
+		data-text="Hide"
+		data-class="is-hidden"
+		aria-controls="your-target-id"
+		aria-live="polite"
+		aria-expanded="false">
+		Show
+	</button>
+	
+	<div id="your-target-id" class="is-hidden"></div>
 
 ### type="button"
 
@@ -54,13 +54,13 @@ The default state of the target area, false = closed, true = open
 
 This could have all the say attributes as the button toggle, but some are a bit redundant 
 
-```<a
-	href="#your-target-id-2"
-	data-action="hide-show"
-	data-text="Hide"
-	data-class="is-hidden"
-	aria-live="polite">
-	Show
-</button>
-
-<div id="your-target-id-2" class="is-hidden"></div>```
+	<a
+		href="#your-target-id-2"
+		data-action="hide-show"
+		data-text="Hide"
+		data-class="is-hidden"
+		aria-live="polite">
+		Show
+	</button>
+	
+	<div id="your-target-id-2" class="is-hidden"></div>
