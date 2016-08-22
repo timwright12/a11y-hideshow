@@ -22,9 +22,6 @@ View the Pen: http://codepen.io/timwright12/pen/yerzqG
 
 This is standard HTML to make a button be a button.
 
-### type="button"
-
-Content
 
 ### data-action="hide-show"
 
