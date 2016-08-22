@@ -15,7 +15,7 @@ View the Pen: http://codepen.io/timwright12/pen/yerzqG
 		aria-expanded="false">
 		Show
 	</button>
-	
+
 	<div id="your-target-id" class="is-hidden"></div>
 
 ### type="button"
@@ -49,7 +49,7 @@ The default state of the target area, false = closed, true = open
 
 ## Syntax for using a link as the toggle
 
-This could have all the say attributes as the button toggle, but some are a bit redundant 
+This could have all the say attributes as the button toggle, but some are a bit redundant
 
 	<a
 		href="#your-target-id-2"
@@ -58,6 +58,6 @@ This could have all the say attributes as the button toggle, but some are a bit 
 		data-class="is-hidden"
 		aria-live="polite">
 		Show
-	</button>
-	
+	</a>
+
 	<div id="your-target-id-2" class="is-hidden"></div>
